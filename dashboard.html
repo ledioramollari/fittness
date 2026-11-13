@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Macro Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="dashboard.js" defer></script>
+</head>
+<body data-page="dashboard" class="min-h-screen bg-slate-950 font-sans text-slate-100">
+  <!-- Navigation links and sign-out button. -->
+  <header class="sticky top-0 z-10 border-b border-slate-800 bg-slate-950/95 backdrop-blur">
+    <div class="mx-auto flex min-h-16 w-full max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3 md:flex-nowrap md:py-0">
+      <a class="flex items-center gap-3 text-xl font-extrabold" href="dashboard.html">
+        
+        Macro Tracker
+      </a>
+      <nav class="order-3 flex w-full items-center justify-between gap-2 md:order-none md:w-auto" aria-label="Main navigation">
+        <a class="rounded-lg bg-slate-800 px-3 py-2 text-slate-100" href="dashboard.html" aria-current="page">
+          Dashboard
+        </a>
+        <a class="rounded-lg px-3 py-2 text-slate-400 hover:bg-slate-800 hover:text-slate-100" href="settings.html">
+          Settings
+        </a>
+      </nav>
+      <div class="ml-auto flex items-center gap-3 md:ml-0">
+        <span class="hidden text-sm text-slate-400 md:inline" id="navUser"></span>
+        <button
+          class="rounded-lg border border-slate-700 bg-slate-800 px-4 py-2.5 font-bold text-slate-100 hover:bg-slate-700"
+          id="logoutBtn"
+          type="button"
+        >
+          Log Out
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto w-full max-w-6xl px-4 py-8">
+    <section id="dashboardPage">
+      <!-- Today's date and nutrition summary. -->
+      <div class="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+          <h1 class="mb-1 text-3xl font-bold">Daily overview</h1>
+          <p class="m-0 text-slate-400">Small, consistent steps add up.</p>
+        </div>
+        <span class="text-sm text-slate-400" id="todayLabel"></span>
+      </div>
+
+      <!-- Current totals compared with daily nutrition targets. -->
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" id="metricsGrid">
+        <article class="rounded-lg border border-slate-800 bg-slate-900 p-5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-sm font-bold text-slate-400">CALORIES</span>
+           
+          </div>
+          <div class="my-3 text-2xl font-extrabold" id="calValue">0</div>
+          <div class="text-xs text-slate-400" id="calTarget">of 2,000 kcal</div>
+          <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-800">
+            <div class="h-full w-0 rounded-full bg-emerald-400 transition-all" id="calBar"></div>
+          </div>
+        </article>
+        <article class="rounded-lg border border-slate-800 bg-slate-900 p-5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-sm font-bold text-slate-400">PROTEIN</span>
+           
+          </div>
+          <div class="my-3 text-2xl font-extrabold" id="proteinValue">0 g</div>
+          <div class="text-xs text-slate-400" id="proteinTarget">of 140 g</div>
+          <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-800">
+            <div class="h-full w-0 rounded-full bg-cyan-400 transition-all" id="proteinBar"></div>
+          </div>
+        </article>
+        <article class="rounded-lg border border-slate-800 bg-slate-900 p-5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-sm font-bold text-slate-400">CARBS</span>
+         
+          </div>
+          <div class="my-3 text-2xl font-extrabold" id="carbsValue">0 g</div>
+          <div class="text-xs text-slate-400" id="carbsTarget">of 220 g</div>
+          <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-800">
+            <div class="h-full w-0 rounded-full bg-amber-400 transition-all" id="carbsBar"></div>
+          </div>
+        </article>
+        <article class="rounded-lg border border-slate-800 bg-slate-900 p-5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-sm font-bold text-slate-400">FATS</span>
+           
+          </div>
+          <div class="my-3 text-2xl font-extrabold" id="fatValue">0 g</div>
+          <div class="text-xs text-slate-400" id="fatTarget">of 65 g</div>
+          <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-800">
+            <div class="h-full w-0 rounded-full bg-pink-400 transition-all" id="fatBar"></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Submitting this form adds a food entry to today's log. -->
+      <article class="mt-5 rounded-lg border border-slate-800 bg-slate-900 p-5">
+        <h2 class="mb-4 text-xl font-bold">Quick food logger</h2>
+        <div>
+      <h1>Search Foods(Later)</h1>
+      <input
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              id="foodName"
+              required
+              placeholder="e.g. Greek yogurt and berries"
+            >
+        </div>
+        <br>
+       <div>
+        <h1>Manual Entry of Food</h1>
+         <form id="foodForm" class="grid grid-cols-1 gap-x-3 sm:grid-cols-2">
+          <div class="col-span-full my-2 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-slate-300" for="foodName">Food name</label>
+            <input
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              id="foodName"
+              required
+              placeholder="e.g. Greek yogurt and berries"
+            >
+          </div>
+          <div class="my-2 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-slate-300" for="foodCalories">Calories (kcal)</label>
+            <input
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              id="foodCalories"
+              type="number"
+              min="0"
+              step="1"
+              required
+            >
+          </div>
+          <div class="my-2 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-slate-300" for="foodProtein">Protein (g)</label>
+            <input
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              id="foodProtein"
+              type="number"
+              min="0"
+              step=".1"
+              value="0"
+              required
+            >
+          </div>
+          <div class="my-2 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-slate-300" for="foodCarbs">Carbs (g)</label>
+            <input
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              id="foodCarbs"
+              type="number"
+              min="0"
+              step=".1"
+              value="0"
+              required
+            >
+          </div>
+          <div class="my-2 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-slate-300" for="foodFat">Fats (g)</label>
+            <input
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              id="foodFat"
+              type="number"
+              min="0"
+              step=".1"
+              value="0"
+              required
+            >
+          </div>
+          <div class="col-span-full">
+            <button
+              class="mt-3 w-full rounded-lg bg-blue-500 px-4 py-2.5 font-bold text-white transition-colors hover:bg-blue-400"
+              type="submit"
+            >
+              &#43; Add food
+            </button>
+          </div>
+        </form>
+       </div>
+
+        <!-- Food entries are rendered here; each delete button removes one. -->
+        <h3 class="mt-6 text-base font-bold">Today's food</h3>
+        <div id="foodList" class="mt-4 flex flex-col gap-2"></div>
+      </article>
+
+     
+      
+    </section>
+  </main>
+
+  <!-- Temporary status messages. -->
+  <div
+    class="pointer-events-none fixed bottom-5 left-1/2 z-10 -translate-x-1/2 translate-y-5 rounded-xl bg-emerald-100 px-4 py-2.5 font-bold text-emerald-950 opacity-0 transition-all"
+    id="toast"
+    role="status"
+  ></div>
+</body>
+</html>

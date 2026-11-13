@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse — Fitness &amp; Macro Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="index.js" defer></script>
+</head>
+<body data-page="auth" class="min-h-screen bg-slate-950 font-sans text-slate-100">
+  <main class="grid min-h-screen place-items-center px-4 py-7">
+    <!-- Login and account setup. -->
+    <div class="w-full max-w-md rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+      <!-- App name. -->
+      <div class="flex items-center gap-3 text-xl font-extrabold">
+        
+        Macro Tracker
+       
+      </div>
+
+      <!-- Login and signup fields. -->
+      <section id="authFormSection">
+        <h1 id="authTitle" class="mb-2 mt-6 text-3xl font-bold leading-tight">Welcome back.</h1>
+        <p id="authSubtitle" class="mb-5 text-slate-400">Log in to keep your progress moving.</p>
+
+        <!-- Click a tab to switch between login and signup. -->
+        <div class="my-6 flex rounded-xl bg-slate-950 p-1">
+          <button
+            id="loginTab"
+            class="flex-1 rounded-lg bg-slate-800 p-2.5 font-bold text-slate-100"
+            type="button"
+          >
+            Log In
+          </button>
+          <button
+            id="signupTab"
+            class="flex-1 rounded-lg p-2.5 text-slate-400"
+            type="button"
+          >
+            Create Account
+          </button>
+        </div>
+
+        <form id="authForm">
+          <div class="my-3 flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-slate-300" for="authEmail">Email</label>
+            <input
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+              id="authEmail"
+              type="email"
+              required
+              autocomplete="email"
+              placeholder="you@example.com"
+            >
+          </div>
+          <div class="my-3 flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-slate-300" for="authPassword">Password</label>
+            <input
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+              id="authPassword"
+              type="password"
+              required
+              minlength="4"
+              autocomplete="current-password"
+              placeholder="At least 4 characters"
+            >
+          </div>
+          <button
+            class="mt-3 w-full rounded-lg bg-blue-500 px-4 py-2.5 font-bold text-white transition-colors hover:bg-blue-400"
+            id="authSubmit"
+            type="submit"
+          >
+            Log In
+          </button>
+          <div class="mt-2 min-h-5 text-sm text-[#ff9eaa]" id="authError" role="alert"></div>
+        </form>
+      </section>
+
+      <!-- New-account profile details and goal. -->
+      <section id="onboardingSection" class="hidden">
+        <h1 class="mb-2 mt-6 text-3xl font-bold leading-tight">Let's set your baseline.</h1>
+        <p class="mb-5 text-slate-400">A few details help us recommend a useful starting target.</p>
+
+        <form id="onboardingForm">
+          <div class="my-3 flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-slate-300" for="onName">Your name</label>
+            <input
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+              id="onName"
+              required
+              placeholder="Your name"
+            >
+          </div>
+
+          <div class="grid grid-cols-1 gap-x-3 sm:grid-cols-2">
+            <div class="my-2 flex flex-col gap-1.5">
+              <label class="text-sm font-semibold text-slate-300" for="onWeight">
+                Current weight (kg)
+              </label>
+              <input
+                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                id="onWeight"
+                type="number"
+                min="1"
+                step=".1"
+                required
+              >
+            </div>
+            <div class="my-2 flex flex-col gap-1.5">
+              <label class="text-sm font-semibold text-slate-300" for="onGoalWeight">
+                Goal weight (kg)
+              </label>
+              <input
+                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                id="onGoalWeight"
+                type="number"
+                min="1"
+                step=".1"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="my-3 flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-slate-300" for="onGoal">Primary goal</label>
+            <select
+              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+              id="onGoal"
+            >
+              <option value="lose">Lose Weight</option>
+              <option value="maintain">Maintain</option>
+              <option value="build">Build Muscle</option>
+            </select>
+          </div>
+          <button
+            class="mt-3 w-full rounded-lg bg-blue-500 px-4 py-2.5 font-bold text-white transition-colors hover:bg-blue-400"
+            type="submit"
+          >
+            Create My Dashboard
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- Temporary messages shown after actions. -->
+  <div
+    class="pointer-events-none fixed bottom-5 left-1/2 z-10 -translate-x-1/2 translate-y-5 rounded-xl bg-emerald-100 px-4 py-2.5 font-bold text-emerald-950 opacity-0 transition-all"
+    id="toast"
+    role="status"
+  ></div>
+</body>
+</html>
