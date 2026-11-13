@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,28 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard — Macro Tracker</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <script src="dashboard.js" defer></script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    h1, h2, h3, .metric-value {
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+
+    .metric-value {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
 </head>
-<body data-page="dashboard" class="min-h-screen bg-slate-950 font-sans text-slate-100">
-  <!-- Navigation links and sign-out button. -->
-  <header class="sticky top-0 z-10 border-b border-slate-800 bg-slate-950/95 backdrop-blur">
+<body data-page="dashboard" class="min-h-screen bg-[#F5F8F6] text-[#13201A]">
+  <header class="sticky top-0 z-10 border-b border-[#DDE5E0] bg-white/95 backdrop-blur">
     <div class="mx-auto flex min-h-16 w-full max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3 md:flex-nowrap md:py-0">
-      <a class="flex items-center gap-3 text-xl font-extrabold" href="dashboard.html">
-        
+      <a class="flex items-center gap-3 text-xl font-extrabold text-[#13201A]" href="dashboard.html">
         Macro Tracker
       </a>
       <nav class="order-3 flex w-full items-center justify-between gap-2 md:order-none md:w-auto" aria-label="Main navigation">
-        <a class="rounded-lg bg-slate-800 px-3 py-2 text-slate-100" href="dashboard.html" aria-current="page">
+        <a class="rounded-xl bg-[#E3F3EA] px-3 py-2 font-semibold text-[#12613E]" href="dashboard.html" aria-current="page">
           Dashboard
         </a>
-        <a class="rounded-lg px-3 py-2 text-slate-400 hover:bg-slate-800 hover:text-slate-100" href="settings.html">
+        <a class="rounded-xl px-3 py-2 font-medium text-[#4A5A52] hover:bg-[#F2F9F5] hover:text-[#12613E]" href="settings.html">
           Settings
         </a>
       </nav>
       <div class="ml-auto flex items-center gap-3 md:ml-0">
-        <span class="hidden text-sm text-slate-400 md:inline" id="navUser"></span>
+        <span class="hidden text-sm font-medium text-[#4A5A52] md:inline" id="navUser"></span>
         <button
-          class="rounded-lg border border-slate-700 bg-slate-800 px-4 py-2.5 font-bold text-slate-100 hover:bg-slate-700"
+          class="rounded-xl border border-[#DDE5E0] bg-white px-4 py-2.5 font-semibold text-[#13201A] transition hover:bg-[#F2F9F5]"
           id="logoutBtn"
           type="button"
         >
@@ -40,92 +52,82 @@
 
   <main class="mx-auto w-full max-w-6xl px-4 py-8">
     <section id="dashboardPage">
-      <!-- Today's date and nutrition summary. -->
       <div class="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <h1 class="mb-1 text-3xl font-bold">Daily overview</h1>
-          <p class="m-0 text-slate-400">Small, consistent steps add up.</p>
+          <h1 class="mb-1 text-3xl font-bold tracking-tight text-[#13201A]">Daily overview</h1>
+          <p class="m-0 text-[#4A5A52]">Small, consistent steps add up.</p>
         </div>
-        <span class="text-sm text-slate-400" id="todayLabel"></span>
+        <span class="text-sm text-[#4A5A52]" id="todayLabel"></span>
       </div>
 
-      <!-- Current totals compared with daily nutrition targets. -->
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" id="metricsGrid">
-        <article class="rounded-lg border border-slate-800 bg-slate-900 p-5">
+        <article class="rounded-[20px] border border-[#DDE5E0] bg-white p-5 shadow-sm">
           <div class="flex items-center justify-between gap-2">
-            <span class="text-sm font-bold text-slate-400">CALORIES</span>
-           
+            <span class="text-sm font-bold tracking-wide text-[#4A5A52]">CALORIES</span>
           </div>
-          <div class="my-3 text-2xl font-extrabold" id="calValue">0</div>
-          <div class="text-xs text-slate-400" id="calTarget">of 2,000 kcal</div>
-          <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-800">
-            <div class="h-full w-0 rounded-full bg-emerald-400 transition-all" id="calBar"></div>
+          <div class="metric-value my-3 text-3xl font-extrabold text-[#13201A]" id="calValue">0</div>
+          <div class="text-sm text-[#4A5A52]" id="calTarget">of 2,000 kcal</div>
+          <div class="mt-4 h-2 overflow-hidden rounded-full bg-[#EAF0EC]">
+            <div class="h-full w-0 rounded-full bg-[#187A4F] transition-all" id="calBar"></div>
           </div>
         </article>
-        <article class="rounded-lg border border-slate-800 bg-slate-900 p-5">
+        <article class="rounded-[20px] border border-[#DDE5E0] bg-white p-5 shadow-sm">
           <div class="flex items-center justify-between gap-2">
-            <span class="text-sm font-bold text-slate-400">PROTEIN</span>
-           
+            <span class="text-sm font-bold tracking-wide text-[#4A5A52]">PROTEIN</span>
           </div>
-          <div class="my-3 text-2xl font-extrabold" id="proteinValue">0 g</div>
-          <div class="text-xs text-slate-400" id="proteinTarget">of 140 g</div>
-          <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-800">
-            <div class="h-full w-0 rounded-full bg-cyan-400 transition-all" id="proteinBar"></div>
+          <div class="metric-value my-3 text-3xl font-extrabold text-[#13201A]" id="proteinValue">0 g</div>
+          <div class="text-sm text-[#4A5A52]" id="proteinTarget">of 140 g</div>
+          <div class="mt-4 h-2 overflow-hidden rounded-full bg-[#EAF0EC]">
+            <div class="h-full w-0 rounded-full bg-[#2F62C9] transition-all" id="proteinBar"></div>
           </div>
         </article>
-        <article class="rounded-lg border border-slate-800 bg-slate-900 p-5">
+        <article class="rounded-[20px] border border-[#DDE5E0] bg-white p-5 shadow-sm">
           <div class="flex items-center justify-between gap-2">
-            <span class="text-sm font-bold text-slate-400">CARBS</span>
-         
+            <span class="text-sm font-bold tracking-wide text-[#4A5A52]">CARBS</span>
           </div>
-          <div class="my-3 text-2xl font-extrabold" id="carbsValue">0 g</div>
-          <div class="text-xs text-slate-400" id="carbsTarget">of 220 g</div>
-          <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-800">
-            <div class="h-full w-0 rounded-full bg-amber-400 transition-all" id="carbsBar"></div>
+          <div class="metric-value my-3 text-3xl font-extrabold text-[#13201A]" id="carbsValue">0 g</div>
+          <div class="text-sm text-[#4A5A52]" id="carbsTarget">of 220 g</div>
+          <div class="mt-4 h-2 overflow-hidden rounded-full bg-[#EAF0EC]">
+            <div class="h-full w-0 rounded-full bg-[#E8892E] transition-all" id="carbsBar"></div>
           </div>
         </article>
-        <article class="rounded-lg border border-slate-800 bg-slate-900 p-5">
+        <article class="rounded-[20px] border border-[#DDE5E0] bg-white p-5 shadow-sm">
           <div class="flex items-center justify-between gap-2">
-            <span class="text-sm font-bold text-slate-400">FATS</span>
-           
+            <span class="text-sm font-bold tracking-wide text-[#4A5A52]">FAT</span>
           </div>
-          <div class="my-3 text-2xl font-extrabold" id="fatValue">0 g</div>
-          <div class="text-xs text-slate-400" id="fatTarget">of 65 g</div>
-          <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-800">
-            <div class="h-full w-0 rounded-full bg-pink-400 transition-all" id="fatBar"></div>
+          <div class="metric-value my-3 text-3xl font-extrabold text-[#13201A]" id="fatValue">0 g</div>
+          <div class="text-sm text-[#4A5A52]" id="fatTarget">of 65 g</div>
+          <div class="mt-4 h-2 overflow-hidden rounded-full bg-[#EAF0EC]">
+            <div class="h-full w-0 rounded-full bg-[#7A4FC4] transition-all" id="fatBar"></div>
           </div>
         </article>
       </div>
 
-      <!-- Submitting this form adds a food entry to today's log. -->
-      <article class="mt-5 rounded-lg border border-slate-800 bg-slate-900 p-5">
-        <h2 class="mb-4 text-xl font-bold">Quick food logger</h2>
-        <div>
-      <h1>Search Foods " Later:("</h1>
-      <input
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
-              id=""
-              required
-              placeholder="e.g. Greek yogurt and berries"
-            >
+      <article class="mt-5 rounded-[20px] border border-[#DDE5E0] bg-white p-5 shadow-sm sm:p-7">
+        <h2 class="mb-4 text-xl font-bold text-[#13201A]">Quick food logger</h2>
+        <div class="mb-5">
+          <label class="mb-2 block text-sm font-semibold text-[#13201A]" for="foodSearch">Search foods</label>
+          <input
+            class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] placeholder:text-[#7C8B83] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
+            id="foodSearch"
+            placeholder="Food search coming soon"
+          >
         </div>
-        <br>
-       <div>
-        <h1>Manual Entry of Food</h1>
-         <form id="foodForm" class="grid grid-cols-1 gap-x-3 sm:grid-cols-2">
-          <div class="col-span-full my-2 flex flex-col gap-2">
-            <label class="text-sm font-semibold text-slate-300" for="foodName">Food name</label>
+        <h3 class="mb-4 text-base font-semibold text-[#4A5A52]">Manual entry</h3>
+        <form id="foodForm" class="grid grid-cols-1 gap-x-4 sm:grid-cols-2">
+          <div class="col-span-full mb-4 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-[#13201A]" for="foodName">Food name</label>
             <input
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] placeholder:text-[#7C8B83] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
               id="foodName"
               required
-              placeholder="e.g. Greek yogurt and berries"
+              placeholder="e.g. Greek yogurt with berries"
             >
           </div>
-          <div class="my-2 flex flex-col gap-2">
-            <label class="text-sm font-semibold text-slate-300" for="foodCalories">Calories (kcal)</label>
+          <div class="mb-4 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-[#13201A]" for="foodCalories">Calories (kcal)</label>
             <input
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
               id="foodCalories"
               type="number"
               min="0"
@@ -133,10 +135,10 @@
               required
             >
           </div>
-          <div class="my-2 flex flex-col gap-2">
-            <label class="text-sm font-semibold text-slate-300" for="foodProtein">Protein (g)</label>
+          <div class="mb-4 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-[#13201A]" for="foodProtein">Protein (g)</label>
             <input
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
               id="foodProtein"
               type="number"
               min="0"
@@ -145,10 +147,10 @@
               required
             >
           </div>
-          <div class="my-2 flex flex-col gap-2">
-            <label class="text-sm font-semibold text-slate-300" for="foodCarbs">Carbs (g)</label>
+          <div class="mb-4 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-[#13201A]" for="foodCarbs">Carbs (g)</label>
             <input
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
               id="foodCarbs"
               type="number"
               min="0"
@@ -157,10 +159,10 @@
               required
             >
           </div>
-          <div class="my-2 flex flex-col gap-2">
-            <label class="text-sm font-semibold text-slate-300" for="foodFat">Fats (g)</label>
+          <div class="mb-4 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-[#13201A]" for="foodFat">Fat (g)</label>
             <input
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:border-cyan-400 focus:outline-none"
+              class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
               id="foodFat"
               type="number"
               min="0"
@@ -171,28 +173,22 @@
           </div>
           <div class="col-span-full">
             <button
-              class="mt-3 w-full rounded-lg bg-blue-500 px-4 py-2.5 font-bold text-white transition-colors hover:bg-blue-400"
+              class="mt-2 w-full rounded-xl bg-[#187A4F] px-5 py-3 font-semibold text-white transition hover:bg-[#12613E] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/30"
               type="submit"
             >
-              &#43; Add food
+              + Add food
             </button>
           </div>
         </form>
-       </div>
 
-        <!-- Food entries are rendered here; each delete button removes one. -->
-        <h3 class="mt-6 text-base font-bold">Today's food</h3>
-        <div id="foodList" class="mt-4 flex flex-col gap-2"></div>
+        <h3 class="mt-7 text-base font-bold text-[#13201A]">Today's food</h3>
+        <div id="foodList" class="mt-4 flex flex-col gap-3"></div>
       </article>
-
-     
-      
     </section>
   </main>
 
-  <!-- Temporary status messages. -->
   <div
-    class="pointer-events-none fixed bottom-5 left-1/2 z-10 -translate-x-1/2 translate-y-5 rounded-xl bg-emerald-100 px-4 py-2.5 font-bold text-emerald-950 opacity-0 transition-all"
+    class="pointer-events-none fixed bottom-5 left-1/2 z-20 -translate-x-1/2 translate-y-5 rounded-xl bg-[#E3F3EA] px-4 py-3 font-semibold text-[#12613E] opacity-0 shadow-lg transition-all"
     id="toast"
     role="status"
   ></div>

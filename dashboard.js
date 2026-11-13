@@ -131,21 +131,21 @@ function renderFood() {
   const list = document.getElementById("foodList");
   const foodEntries = ensureDailyLog(currentUser()).foods;
   if (!foodEntries.length) {
-    list.innerHTML = '<div class="mt-4 rounded-lg border border-dashed border-slate-700 bg-slate-950 px-3 py-6 text-center text-sm text-slate-400">No food logged yet. Add your first meal above.</div>';
+    list.innerHTML = '<div class="mt-4 rounded-xl border border-dashed border-[#DDE5E0] bg-white px-4 py-8 text-center text-sm text-[#4A5A52]">No food logged yet. Add your first meal above.</div>';
     return;
   }
   let foodHTML = "";
   for (let i = foodEntries.length - 1; i >= 0; i--) {
     const foodEntry = foodEntries[i];
     foodHTML += `
-    <div class="flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-950 px-3 py-3">
+    <div class="flex items-center justify-between gap-3 rounded-xl border border-[#DDE5E0] bg-white px-4 py-4">
       <div class="min-w-0">
-        <div class="break-words font-bold">${escapeHTML(foodEntry.name)}</div>
-        <div class="mt-0.5 text-xs text-slate-400">P ${formatNumber(foodEntry.protein)}g · C ${formatNumber(foodEntry.carbs)}g · F ${formatNumber(foodEntry.fat)}g</div>
+        <div class="break-words font-semibold text-[#13201A]">${escapeHTML(foodEntry.name)}</div>
+        <div class="mt-1 text-sm text-[#4A5A52]">P ${formatNumber(foodEntry.protein)}g · C ${formatNumber(foodEntry.carbs)}g · F ${formatNumber(foodEntry.fat)}g</div>
       </div>
-      <div class="flex shrink-0 items-center gap-2.5">
-        <span class="whitespace-nowrap text-sm text-slate-300">${formatNumber(foodEntry.calories)} kcal</span>
-        <button class="rounded-[7px] px-[7px] py-1 text-lg text-rose-400 hover:bg-rose-950" data-food-id="${escapeHTML(foodEntry.id)}" title="Delete food" type="button">×</button>
+      <div class="flex shrink-0 items-center gap-2">
+        <span class="whitespace-nowrap text-sm font-semibold tabular-nums text-[#4A5A52]">${formatNumber(foodEntry.calories)} kcal</span>
+        <button class="rounded-lg px-2.5 py-2 text-sm font-semibold text-[#C2413A] hover:bg-[#FBE7E5] focus:outline-none focus:ring-2 focus:ring-[#C2413A]/20" data-food-id="${escapeHTML(foodEntry.id)}" title="Delete food" type="button">×</button>
       </div>
     </div>
     `;

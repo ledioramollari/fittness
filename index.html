@@ -3,38 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pulse — Fitness &amp; Macro Tracker</title>
+  <title>Macro Tracker</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <script src="index.js" defer></script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    h1, h2 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+  </style>
 </head>
-<body data-page="auth" class="min-h-screen bg-slate-950 font-sans text-slate-100">
-  <main class="grid min-h-screen place-items-center px-4 py-7">
-    <!-- Login and account setup. -->
-    <div class="w-full max-w-md rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
-      <!-- App name. -->
-      <div class="flex items-center gap-3 text-xl font-extrabold">
-        
-        Macro Tracker
-       
-      </div>
+<body data-page="auth" class="min-h-screen bg-[#F5F8F6] text-[#13201A]">
+  <main class="grid min-h-screen place-items-center px-4 py-8">
+    <section class="w-full max-w-md rounded-[20px] border border-[#DDE5E0] bg-white p-6 shadow-sm sm:p-8">
+      <div class="mb-6 text-xl font-extrabold text-[#13201A]">Macro Tracker</div>
 
-      <!-- Login and signup fields. -->
       <section id="authFormSection">
-        <h1 id="authTitle" class="mb-2 mt-6 text-3xl font-bold leading-tight">Welcome back.</h1>
-        <p id="authSubtitle" class="mb-5 text-slate-400">Log in to keep your progress moving.</p>
+        <h1 id="authTitle" class="mb-2 text-3xl font-bold leading-tight text-[#13201A]">Welcome back.</h1>
+        <p id="authSubtitle" class="mb-6 text-base leading-6 text-[#4A5A52]">Log in to keep your progress moving.</p>
 
-        <!-- Click a tab to switch between login and signup. -->
-        <div class="my-6 flex rounded-xl bg-slate-950 p-1">
+        <div class="my-6 flex rounded-xl bg-[#F2F9F5] p-1">
           <button
             id="loginTab"
-            class="flex-1 rounded-lg bg-slate-800 p-2.5 font-bold text-slate-100"
+            class="flex-1 rounded-lg bg-[#E3F3EA] p-2.5 font-semibold text-[#12613E]"
             type="button"
           >
             Log In
           </button>
           <button
             id="signupTab"
-            class="flex-1 rounded-lg p-2.5 text-slate-400"
+            class="flex-1 rounded-lg p-2.5 font-medium text-[#4A5A52] hover:text-[#12613E]"
             type="button"
           >
             Create Account
@@ -42,10 +46,10 @@
         </div>
 
         <form id="authForm">
-          <div class="my-3 flex flex-col gap-1.5">
-            <label class="text-sm font-semibold text-slate-300" for="authEmail">Email</label>
+          <div class="my-4 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-[#13201A]" for="authEmail">Email</label>
             <input
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+              class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] placeholder:text-[#7C8B83] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
               id="authEmail"
               type="email"
               required
@@ -53,10 +57,10 @@
               placeholder="you@example.com"
             >
           </div>
-          <div class="my-3 flex flex-col gap-1.5">
-            <label class="text-sm font-semibold text-slate-300" for="authPassword">Password</label>
+          <div class="my-4 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-[#13201A]" for="authPassword">Password</label>
             <input
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+              class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] placeholder:text-[#7C8B83] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
               id="authPassword"
               type="password"
               required
@@ -66,39 +70,36 @@
             >
           </div>
           <button
-            class="mt-3 w-full rounded-lg bg-blue-500 px-4 py-2.5 font-bold text-white transition-colors hover:bg-blue-400"
+            class="mt-3 w-full rounded-xl bg-[#187A4F] px-5 py-3 font-semibold text-white transition hover:bg-[#12613E] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/30"
             id="authSubmit"
             type="submit"
           >
             Log In
           </button>
-          <div class="mt-2 min-h-5 text-sm text-[#ff9eaa]" id="authError" role="alert"></div>
+          <div class="mt-3 min-h-5 text-sm text-[#C2413A]" id="authError" role="alert"></div>
         </form>
       </section>
 
-      <!-- New-account profile details and goal. -->
       <section id="onboardingSection" class="hidden">
-        <h1 class="mb-2 mt-6 text-3xl font-bold leading-tight">Let's set your baseline.</h1>
-        <p class="mb-5 text-slate-400">A few details help us recommend a useful starting target.</p>
+        <h1 class="mb-2 text-3xl font-bold leading-tight text-[#13201A]">Let's set your baseline.</h1>
+        <p class="mb-6 text-base leading-6 text-[#4A5A52]">A few details help us recommend a useful starting target.</p>
 
         <form id="onboardingForm">
-          <div class="my-3 flex flex-col gap-1.5">
-            <label class="text-sm font-semibold text-slate-300" for="onName">Your name</label>
+          <div class="my-4 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-[#13201A]" for="onName">Your name</label>
             <input
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+              class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] placeholder:text-[#7C8B83] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
               id="onName"
               required
               placeholder="Your name"
             >
           </div>
 
-          <div class="grid grid-cols-1 gap-x-3 sm:grid-cols-2">
-            <div class="my-2 flex flex-col gap-1.5">
-              <label class="text-sm font-semibold text-slate-300" for="onWeight">
-                Current weight (kg)
-              </label>
+          <div class="grid grid-cols-1 gap-x-4 sm:grid-cols-2">
+            <div class="my-2 flex flex-col gap-2">
+              <label class="text-sm font-semibold text-[#13201A]" for="onWeight">Current weight (kg)</label>
               <input
-                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
                 id="onWeight"
                 type="number"
                 min="1"
@@ -106,12 +107,10 @@
                 required
               >
             </div>
-            <div class="my-2 flex flex-col gap-1.5">
-              <label class="text-sm font-semibold text-slate-300" for="onGoalWeight">
-                Goal weight (kg)
-              </label>
+            <div class="my-2 flex flex-col gap-2">
+              <label class="text-sm font-semibold text-[#13201A]" for="onGoalWeight">Goal weight (kg)</label>
               <input
-                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
                 id="onGoalWeight"
                 type="number"
                 min="1"
@@ -121,10 +120,10 @@
             </div>
           </div>
 
-          <div class="my-3 flex flex-col gap-1.5">
-            <label class="text-sm font-semibold text-slate-300" for="onGoal">Primary goal</label>
+          <div class="my-4 flex flex-col gap-2">
+            <label class="text-sm font-semibold text-[#13201A]" for="onGoal">Primary goal</label>
             <select
-              class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+              class="w-full rounded-lg border border-[#DDE5E0] bg-white px-4 py-3 text-[#13201A] focus:border-[#187A4F] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/15"
               id="onGoal"
             >
               <option value="lose">Lose Weight</option>
@@ -133,19 +132,18 @@
             </select>
           </div>
           <button
-            class="mt-3 w-full rounded-lg bg-blue-500 px-4 py-2.5 font-bold text-white transition-colors hover:bg-blue-400"
+            class="mt-3 w-full rounded-xl bg-[#187A4F] px-5 py-3 font-semibold text-white transition hover:bg-[#12613E] focus:outline-none focus:ring-2 focus:ring-[#187A4F]/30"
             type="submit"
           >
             Create My Dashboard
           </button>
         </form>
       </section>
-    </div>
+    </section>
   </main>
 
-  <!-- Temporary messages shown after actions. -->
   <div
-    class="pointer-events-none fixed bottom-5 left-1/2 z-10 -translate-x-1/2 translate-y-5 rounded-xl bg-emerald-100 px-4 py-2.5 font-bold text-emerald-950 opacity-0 transition-all"
+    class="pointer-events-none fixed bottom-5 left-1/2 z-20 -translate-x-1/2 translate-y-5 rounded-xl bg-[#E3F3EA] px-4 py-3 font-semibold text-[#12613E] opacity-0 shadow-lg transition-all"
     id="toast"
     role="status"
   ></div>
